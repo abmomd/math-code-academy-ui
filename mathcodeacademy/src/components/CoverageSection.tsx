@@ -1,3 +1,9 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
+/* ================= MAIN SECTION ================= */
+
 export default function CoverageSection() {
   return (
     <section className="py-24 bg-[#0f1720] overflow-hidden">
@@ -9,7 +15,7 @@ export default function CoverageSection() {
             Get help with core academic subjects
           </h2>
 
-          <MovingRow
+          <Marquee
             items={[
               "Mathematics",
               "Coding",
@@ -20,6 +26,7 @@ export default function CoverageSection() {
               "Scratch",
               "Data Structures",
             ]}
+            speed={0.4}
           />
         </div>
 
@@ -29,7 +36,19 @@ export default function CoverageSection() {
             For all major school curriculums
           </h2>
 
-          <MovingCurriculumRow />
+          <Marquee
+            items={[
+              "🇮🇳 Indian Curriculum (CBSE / ICSE)",
+              "🇬🇧 British Curriculum (IGCSE / A-Levels)",
+              "🇺🇸 American Curriculum",
+              "🌍 IB Curriculum",
+              "🇨🇦 Canadian Curriculum",
+              "🇦🇺 Australian Curriculum",
+              "🇸🇬 Singapore Curriculum",
+              "🇪🇺 Cambridge International",
+            ]}
+            speed={0.25}
+          />
         </div>
 
         {/* ================= GRADES ================= */}
@@ -62,27 +81,55 @@ export default function CoverageSection() {
   );
 }
 
-/* ================= GENERIC MARQUEE ROW ================= */
+/* ================= JS MARQUEE (GUARANTEED WORKING) ================= */
 
-function MovingRow({ items }: { items: string[] }) {
+function Marquee({
+  items,
+  speed = 0.3,
+}: {
+  items: string[];
+  speed?: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    let x = 0;
+    let rafId: number;
+
+    const animate = () => {
+      x -= speed;
+      el.style.transform = `translateX(${x}px)`;
+
+      // Reset when half content has passed
+      if (Math.abs(x) >= el.scrollWidth / 2) {
+        x = 0;
+      }
+
+      rafId = requestAnimationFrame(animate);
+    };
+
+    rafId = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(rafId);
+  }, [speed]);
+
   return (
     <div className="relative w-full overflow-hidden">
-      <div className="flex">
-
-        {/* Track 1 */}
-        <div className="flex w-max gap-6 marquee">
-          {items.map((item, i) => (
-            <MarqueeItem key={`a-${i}`} label={item} />
-          ))}
-        </div>
-
-        {/* Track 2 */}
-        <div className="flex w-max gap-6 marquee">
-          {items.map((item, i) => (
-            <MarqueeItem key={`b-${i}`} label={item} />
-          ))}
-        </div>
-
+      <div
+        ref={ref}
+        className="flex w-max gap-6 will-change-transform"
+      >
+        {[...items, ...items].map((item, i) => (
+          <div
+            key={i}
+            className="px-6 py-3 rounded-full bg-[#07121a] border border-slate-800 text-slate-200 font-medium whitespace-nowrap"
+          >
+            {item}
+          </div>
+        ))}
       </div>
 
       {/* Fade edges */}
@@ -90,36 +137,6 @@ function MovingRow({ items }: { items: string[] }) {
       <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#0f1720] to-transparent" />
     </div>
   );
-}
-
-
-function MarqueeItem({ label }: { label: string }) {
-  return (
-    <div className="px-6 py-3 rounded-full bg-[#07121a] border border-slate-800 text-slate-200 font-medium whitespace-nowrap">
-      {label}
-    </div>
-  );
-}
-
-/* ================= CURRICULUM MARQUEE ================= */
-
-function MovingCurriculumRow() {
-  const curriculums = [
-    { label: "Indian Curriculum (CBSE / ICSE)", flag: "🇮🇳" },
-    { label: "British Curriculum (IGCSE / A-Levels)", flag: "🇬🇧" },
-    { label: "American Curriculum", flag: "🇺🇸" },
-    { label: "IB Curriculum", flag: "🌍" },
-    { label: "Canadian Curriculum", flag: "🇨🇦" },
-    { label: "Australian Curriculum", flag: "🇦🇺" },
-    { label: "Singapore Curriculum", flag: "🇸🇬" },
-    { label: "Cambridge International", flag: "🇪🇺" },
-  ];
-
-  const items = curriculums.map(
-    c => `${c.flag} ${c.label}`
-  );
-
-  return <MovingRow items={items} />;
 }
 
 /* ================= GRADE CARD ================= */
