@@ -24,3 +24,22 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes testimonial-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.testimonial-track {
+  display: flex;
+  gap: 1.5rem;
+  animation: testimonial-scroll 30s linear infinite;
+}
+
+.testimonial-track:hover {
+  animation-play-state: paused;
+}

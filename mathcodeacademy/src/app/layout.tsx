@@ -1,5 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "MathCode Academy | Math & Coding Excellence",
@@ -21,7 +23,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-[#0b0f14] text-slate-100 antialiased">
-        {children}
+        {/* NAVBAR – visible on ALL pages */}
+        <Navbar />
+
+        {/* Page content */}
+        <main className="pt-32">
+          {children}
+        </main>
+
+        {/* FOOTER – visible on ALL pages */}
+        <Footer />
       </body>
     </html>
   );
