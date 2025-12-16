@@ -27,9 +27,10 @@ export default function RootLayout({
         <Navbar />
 
         {/* Page content */}
-        <main className="pt-32">
-          {children}
-        </main>
+<main className="pt-20 md:pt-32">
+  {children}
+</main>
+
 
         {/* FOOTER – visible on ALL pages */}
         <Footer />

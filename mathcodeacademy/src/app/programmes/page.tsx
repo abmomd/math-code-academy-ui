@@ -82,20 +82,21 @@ export default function ProgrammesPage() {
             key={i}
             className="group relative rounded-2xl border border-white/10 
             bg-gradient-to-br from-white/8 to-white/0 
-            p-8 backdrop-blur-xl
+            p-8 backdrop-blur-md md:backdrop-blur-xl
             transition-all duration-300
             hover:-translate-y-1 hover:shadow-2xl hover:shadow-green-500/10"
           >
             {/* Popular Badge */}
-            {p.popular && (
-              <span
-                className="absolute right-6 top-6 rounded-full 
-                bg-green-500/90 px-4 py-1 text-xs font-semibold text-black
-                shadow-md shadow-green-500/40"
-              >
-                Most Popular
-              </span>
-            )}
+{p.popular && (
+  <span
+    className="absolute right-4 top-4 md:right-6 md:top-6 
+    rounded-full bg-green-500/90 px-3 py-1 
+    text-xs font-semibold text-black"
+  >
+    Most Popular
+  </span>
+)}
+
 
             {/* Title */}
             <h3 className="text-2xl font-semibold tracking-tight">
@@ -117,24 +118,20 @@ export default function ProgrammesPage() {
             </ul>
 
             {/* Price & CTA */}
-            <div className="mt-10 flex items-center justify-between">
-              <div>
-                <p className="text-xs text-white/50">
-                  Programme Fee
-                </p>
-                <span className="text-3xl font-semibold">
-                  ₹{p.price}
-                </span>
-              </div>
+<div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+  <div>
+    <p className="text-xs text-white/50">Programme Fee</p>
+    <span className="text-3xl font-semibold">₹{p.price}</span>
+  </div>
 
-              <button
-                className="rounded-full bg-blue-600 px-7 py-2.5 text-sm 
-                font-medium transition-all
-                hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/30"
-              >
-                Book Free Class
-              </button>
-            </div>
+  <button
+    className="w-full sm:w-auto rounded-full 
+    bg-blue-600 px-7 py-3 text-sm font-medium"
+  >
+    Book Free Class
+  </button>
+</div>
+
           </div>
         ))}
       </div>
