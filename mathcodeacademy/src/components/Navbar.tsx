@@ -1,34 +1,27 @@
-"use client";
-
 import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-white/10 bg-black/40 backdrop-blur-xl">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-        <Link href="/" className="text-xl font-semibold tracking-wide">
-          MathCode<span className="text-blue-500">Academy</span>
-        </Link>
+    <nav
+      className="fixed top-4 left-1/2 -translate-x-1/2 z-50
+      glass w-[92%] max-w-6xl px-8 py-4 flex items-center justify-between"
+    >
+      <Link href="/" className="text-xl font-bold">
+        MathCode<span className="text-green-400">Academy</span>
+      </Link>
 
-        <nav className="hidden md:flex items-center gap-8 text-sm">
-          <Link href="/programmes" className="hover:text-blue-400">
-            Programmes
-          </Link>
-          <Link href="/testimonials" className="hover:text-blue-400">
-            Testimonials
-          </Link>
-          <Link href="/contact" className="hover:text-blue-400">
-            Contact
-          </Link>
-        </nav>
-
-        <Link
-          href="/contact"
-          className="rounded-full bg-blue-600 px-5 py-2 text-sm font-medium hover:bg-blue-500 transition"
-        >
-          Book Free Class
-        </Link>
+      <div className="hidden md:flex gap-8 text-sm text-gray-300">
+        <Link href="/programmes">Programmes</Link>
+        <Link href="/testimonials">Testimonials</Link>
+        <Link href="/contact">Contact</Link>
       </div>
-    </header>
+
+      <Link
+        href="/contact"
+        className="bg-blue-600 px-5 py-2 rounded-xl text-sm font-medium"
+      >
+        Book Free Class
+      </Link>
+    </nav>
   );
 }
