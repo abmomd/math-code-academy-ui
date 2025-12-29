@@ -2,16 +2,14 @@
 
 import { useEffect, useRef } from "react";
 
-/* ================= MAIN SECTION ================= */
-
 export default function CoverageSection() {
   return (
-    <section className="py-24 bg-[#0f1720] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 space-y-24">
+    <section className="py-32 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 space-y-28">
 
         {/* ================= SUBJECTS ================= */}
         <div className="text-center">
-          <h2 className="text-4xl font-bold mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-10">
             Get help with core academic subjects
           </h2>
 
@@ -26,13 +24,13 @@ export default function CoverageSection() {
               "Scratch",
               "Data Structures",
             ]}
-            speed={0.4}
+            speed={0.35}
           />
         </div>
 
         {/* ================= CURRICULUMS ================= */}
         <div className="text-center">
-          <h2 className="text-4xl font-bold mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-10">
             For all major school curriculums
           </h2>
 
@@ -53,8 +51,8 @@ export default function CoverageSection() {
 
         {/* ================= GRADES ================= */}
         <div className="text-center">
-          <h2 className="text-4xl font-bold mb-12">
-            In all grade levels
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-14">
+            Programs for every stage of learning
           </h2>
 
           <div className="grid md:grid-cols-3 gap-10">
@@ -80,9 +78,6 @@ export default function CoverageSection() {
     </section>
   );
 }
-
-/* ================= JS MARQUEE (GUARANTEED WORKING) ================= */
-
 function Marquee({
   items,
   speed = 0.3,
@@ -103,7 +98,6 @@ function Marquee({
       x -= speed;
       el.style.transform = `translateX(${x}px)`;
 
-      // Reset when half content has passed
       if (Math.abs(x) >= el.scrollWidth / 2) {
         x = 0;
       }
@@ -125,7 +119,7 @@ function Marquee({
         {[...items, ...items].map((item, i) => (
           <div
             key={i}
-            className="px-6 py-3 rounded-full bg-[#07121a] border border-slate-800 text-slate-200 font-medium whitespace-nowrap"
+            className="px-6 py-3 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-medium whitespace-nowrap"
           >
             {item}
           </div>
@@ -133,14 +127,11 @@ function Marquee({
       </div>
 
       {/* Fade edges */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#0f1720] to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#0f1720] to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent" />
     </div>
   );
 }
-
-/* ================= GRADE CARD ================= */
-
 function GradeCard({
   title,
   subtitle,
@@ -151,10 +142,18 @@ function GradeCard({
   description: string;
 }) {
   return (
-    <div className="bg-[#07121a] border border-slate-800 rounded-2xl p-6 text-left">
-      <h3 className="text-xl font-semibold">{title}</h3>
-      <p className="text-green-400 font-medium mt-1">{subtitle}</p>
-      <p className="mt-4 text-slate-400">{description}</p>
+    <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-md hover:shadow-lg transition">
+      <h3 className="text-xl font-semibold text-slate-900">
+        {title}
+      </h3>
+
+      <p className="text-blue-600 font-medium mt-1">
+        {subtitle}
+      </p>
+
+      <p className="mt-4 text-slate-600">
+        {description}
+      </p>
     </div>
   );
 }

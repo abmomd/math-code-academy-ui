@@ -1,4 +1,5 @@
-"use client";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const testimonials = [
   {
@@ -41,42 +42,44 @@ const testimonials = [
 
 export default function TestimonialsPage() {
   return (
-    <div className="min-h-screen px-6 py-16">
-      <div className="max-w-6xl mx-auto">
-        <p className="text-slate-400 text-center max-w-2xl mx-auto mb-14">
-          Hear from parents and students across the world who have experienced
-          personalised math and coding mentorship at MathCode Academy.
-        </p>
+    <>
+      <Navbar />
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((t, i) => (
-            <div
-              key={i}
-              className="glass glass-hover p-6 flex flex-col justify-between"
-            >
-              {/* Testimonial Text */}
-              <p className="text-slate-300 text-sm leading-relaxed mb-6">
-                “{t.text}”
-              </p>
+      <section className="min-h-screen px-6 py-28 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-slate-600 text-center max-w-2xl mx-auto mb-14">
+            Hear from parents and students across the world who have experienced
+            personalised mentorship at MathCode Academy.
+          </p>
 
-              {/* Meta Info */}
-              <div className="border-t border-white/10 pt-4 space-y-1">
-                <p className="text-green-400 text-sm font-medium">
-                  {t.name}
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {testimonials.map((t, i) => (
+              <div
+                key={i}
+                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-md hover:shadow-lg transition"
+              >
+                <p className="text-slate-600 text-sm leading-relaxed mb-6">
+                  “{t.text}”
                 </p>
 
-                <p className="text-xs text-slate-400">
-                  {t.course}
-                </p>
-
-                <p className="text-xs text-slate-500">
-                  {t.country}
-                </p>
+                <div className="border-t border-slate-200 pt-4 space-y-1">
+                  <p className="text-blue-600 text-sm font-medium">
+                    {t.name}
+                  </p>
+                  <p className="text-xs text-slate-500">
+                    {t.course}
+                  </p>
+                  <p className="text-xs text-slate-400">
+                    {t.country}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+
+
+    </>
   );
 }
