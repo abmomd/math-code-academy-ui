@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata: Metadata = {
   title: "MathCode Academy | Math & Coding Excellence",
@@ -22,18 +23,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-[#0b0f14] text-slate-100 antialiased">
-        {/* NAVBAR – visible on ALL pages */}
+      {/* ✅ WHITE BODY */}
+      <body className="bg-white text-slate-900 antialiased">
         <Navbar />
 
-        {/* Page content */}
-<main className="pt-20 md:pt-32">
-  {children}
-</main>
+        {/* Content starts AFTER navbar height */}
+        <main className="pt-20">
+          {children}
+        </main>
 
-
-        {/* FOOTER – visible on ALL pages */}
         <Footer />
+        {/* Floating WhatsApp Button */}
+      <WhatsAppButton />
       </body>
     </html>
   );

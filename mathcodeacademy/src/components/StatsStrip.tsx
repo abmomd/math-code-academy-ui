@@ -1,52 +1,56 @@
 export default function StatsStrip() {
-  const stats = [
-    {
-      value: "4+",
-      title: "Years Experience",
-      subtitle: "Teaching & Mentorship",
-    },
-    {
-      value: "100+",
-      title: "Students Taught",
-      subtitle: "Across Multiple Curricula",
-    },
-    {
-      value: "Grades 3–12",
-      title: "Structured Programs",
-      subtitle: "Concept → Mastery",
-    },
-    {
-      value: "Math • Physics • Coding",
-      title: "One Platform",
-      subtitle: "Integrated Learning",
-    },
-  ];
-
   return (
-    <section className="relative mt-24">
-      {/* Background Glow */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-blue-500/10 via-green-500/10 to-purple-500/10 blur-3xl" />
+    <section className="relative z-10 mx-auto max-w-7xl px-6 mt-24">
+      <div
+        className="
+          rounded-3xl 
+          border border-slate-200 
+          bg-white 
+          shadow-[0_20px_60px_-20px_rgba(0,0,0,0.15)]
+          px-8 py-14
+        "
+      >
 
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="grid gap-6 rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl md:grid-cols-4">
-          {stats.map((stat, i) => (
-            <div
-              key={i}
-              className="flex flex-col items-center text-center px-4"
-            >
-              <div className="text-4xl font-semibold tracking-tight text-green-400">
-                {stat.value}
-              </div>
-
-              <div className="mt-2 text-sm font-medium text-white">
-                {stat.title}
-              </div>
-
-              <div className="mt-1 text-xs text-white/60">
-                {stat.subtitle}
-              </div>
+        {/* ================= STATS ================= */}
+        <div className="grid text-center md:grid-cols-3">
+          {/* Stat 1 */}
+          <div>
+            <div className="text-4xl font-extrabold text-blue-600">
+              4+
             </div>
-          ))}
+            <p className="mt-2 font-semibold text-slate-900">
+              Years Experience
+            </p>
+            <p className="mt-1 text-sm text-slate-500">
+              Teaching & Mentorship
+            </p>
+          </div>
+
+          {/* Stat 2 */}
+          <div>
+            <div className="text-4xl font-extrabold text-blue-600">
+              100+
+            </div>
+            <p className="mt-2 font-semibold text-slate-900">
+              Students Taught
+            </p>
+            <p className="mt-1 text-sm text-slate-500">
+              Across Multiple Curricula
+            </p>
+          </div>
+
+          {/* Stat 3 */}
+          <div>
+            <div className="text-4xl font-extrabold text-blue-600">
+              Grades 3–12
+            </div>
+            <p className="mt-2 font-semibold text-slate-900">
+              Structured Programs
+            </p>
+            <p className="mt-1 text-sm text-slate-500">
+              Concept → Mastery
+            </p>
+          </div>
         </div>
       </div>
     </section>

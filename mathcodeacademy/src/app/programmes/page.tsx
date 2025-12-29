@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { programmes } from "@/data/programmes";
 import { Subject } from "@/types/programme";
 
@@ -14,127 +16,149 @@ export default function ProgrammesPage() {
   const [subject, setSubject] = useState<Subject>(subjects[0]);
 
   return (
-    <section className="relative mx-auto max-w-7xl px-6 pb-32">
-      {/* Background Glow */}
-      <div
-        className="pointer-events-none absolute left-1/2 top-40 -z-10 
-        h-[500px] w-[500px] -translate-x-1/2 
-        rounded-full bg-green-500/10 blur-[140px]"
-      />
+    <>
+      <Navbar />
 
-      {/* Header */}
-      <div className="mb-16 text-center">
-        <h1 className="text-5xl font-semibold tracking-tight">
-          Our Programmes
-        </h1>
-        <p className="mt-4 text-white/60">
-          AP, Olympiad, US & UK Curriculum Excellence
-        </p>
-      </div>
+      <main className="relative bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-32">
+        {/* soft background blobs */}
+        <div className="absolute -top-40 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-blue-200/30 blur-[120px]" />
+        <div className="absolute top-1/3 right-0 h-[400px] w-[400px] rounded-full bg-indigo-200/30 blur-[120px]" />
 
-      {/* Category Selector */}
-      <div className="mb-12 flex justify-center">
-        <div className="glass flex flex-wrap gap-2 rounded-full p-2">
-          {categories.map(cat => (
-            <button
-              key={cat}
-              onClick={() => {
-                setCategory(cat);
-                setSubject(
-                  Object.keys(programmes[cat])[0] as Subject
-                );
-              }}
-              className={`rounded-full px-6 py-2 text-sm font-medium transition-all ${
-                category === cat
-                  ? "bg-blue-600 text-white shadow-lg"
-                  : "text-white/70 hover:bg-white/10"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Subject Tabs */}
-      <div className="mb-20 flex justify-center">
-        <div className="flex gap-3 rounded-xl bg-white/5 p-2">
-          {subjects.map(s => (
-            <button
-              key={s}
-              onClick={() => setSubject(s)}
-              className={`rounded-lg px-5 py-2 text-sm font-medium transition-all ${
-                subject === s
-                  ? "bg-green-500 text-black shadow-md"
-                  : "text-white/70 hover:bg-white/10"
-              }`}
-            >
-              {s}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Programme Cards */}
-      <div className="grid gap-10 md:grid-cols-2">
-        {programmes[category][subject]?.map((p, i) => (
-          <div
-            key={i}
-            className="group relative rounded-2xl border border-white/10 
-            bg-gradient-to-br from-white/8 to-white/0 
-            p-8 backdrop-blur-md md:backdrop-blur-xl
-            transition-all duration-300
-            hover:-translate-y-1 hover:shadow-2xl hover:shadow-green-500/10"
-          >
-            {/* Popular Badge */}
-{p.popular && (
-  <span
-    className="absolute right-4 top-4 md:right-6 md:top-6 
-    rounded-full bg-green-500/90 px-3 py-1 
-    text-xs font-semibold text-black"
-  >
-    Most Popular
-  </span>
-)}
-
-
-            {/* Title */}
-            <h3 className="text-2xl font-semibold tracking-tight">
-              {p.title}
-            </h3>
-
-            <p className="mt-1 text-sm text-white/50">
-              {p.sessions} sessions • {p.duration}
+        <section className="relative mx-auto max-w-7xl px-6">
+          {/* Header */}
+          <div className="mb-20 text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900">
+              Our Programmes
+            </h1>
+            <p className="mt-4 text-slate-600 max-w-2xl mx-auto">
+              Structured learning paths across AP, Olympiads, US & UK curricula —
+              designed for mastery.
             </p>
+          </div>
 
-            {/* Features */}
-            <ul className="mt-6 space-y-3 text-sm text-white/80">
-              {p.features.map((f, idx) => (
-                <li key={idx} className="flex items-start gap-3">
-                  <span className="mt-[2px] text-green-400">✔</span>
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
+{/* CATEGORY SELECTOR */}
+<div className="mb-10 flex justify-center">
+  <div className="
+    relative flex gap-2 rounded-full 
+    bg-white/70 backdrop-blur-xl 
+    border border-slate-200 
+    p-2 shadow-lg
+  ">
+    {categories.map(cat => {
+      const active = category === cat;
 
-            {/* Price & CTA */}
-<div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-  <div>
-    <p className="text-xs text-white/50">Programme Fee</p>
-    <span className="text-3xl font-semibold">₹{p.price}</span>
+      return (
+        <button
+          key={cat}
+          onClick={() => {
+            setCategory(cat);
+            setSubject(Object.keys(programmes[cat])[0] as Subject);
+          }}
+          className={`
+            relative px-6 py-2.5 text-sm font-medium rounded-full
+            transition-all duration-300
+            ${
+              active
+                ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-md shadow-blue-500/30"
+                : "text-slate-600 hover:text-slate-900 hover:bg-blue-50"
+            }
+          `}
+        >
+          {cat}
+        </button>
+      );
+    })}
   </div>
-
-  <button
-    className="w-full sm:w-auto rounded-full 
-    bg-blue-600 px-7 py-3 text-sm font-medium"
-  >
-    Book Free Class
-  </button>
 </div>
 
+
+       {/* SUBJECT TABS */}
+<div className="mb-20 flex justify-center">
+  <div className="
+    flex gap-2 rounded-2xl 
+    bg-white/80 backdrop-blur-xl 
+    border border-slate-200 
+    p-2 shadow-md
+  ">
+    {subjects.map(s => {
+      const active = subject === s;
+
+      return (
+        <button
+          key={s}
+          onClick={() => setSubject(s)}
+          className={`
+            px-5 py-2 text-sm font-medium rounded-xl
+            transition-all duration-300
+            ${
+              active
+                ? "bg-blue-600 text-white shadow-sm shadow-blue-500/30"
+                : "text-slate-600 hover:bg-blue-50 hover:text-slate-900"
+            }
+          `}
+        >
+          {s}
+        </button>
+      );
+    })}
+  </div>
+</div>
+
+
+          {/* Programme Cards */}
+          <div className="grid gap-10 md:grid-cols-2">
+            {programmes[category][subject]?.map((p, i) => (
+              <div
+                key={i}
+                className="relative rounded-3xl bg-white/70 backdrop-blur-xl 
+                border border-slate-200 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)]
+                p-8 transition-all duration-300
+                hover:-translate-y-2 hover:shadow-[0_30px_80px_-20px_rgba(59,130,246,0.35)]"
+              >
+                {/* Popular Badge */}
+                {p.popular && (
+                  <span className="absolute right-6 top-6 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-3 py-1 text-xs font-semibold text-white shadow">
+                    Most Popular
+                  </span>
+                )}
+
+                <h3 className="text-2xl font-semibold text-slate-900">
+                  {p.title}
+                </h3>
+
+                <p className="mt-1 text-sm text-slate-500">
+                  {p.sessions} sessions • {p.duration}
+                </p>
+
+                <ul className="mt-6 space-y-3 text-sm text-slate-600">
+                  {p.features.map((f, idx) => (
+                    <li key={idx} className="flex gap-3">
+                      <span className="text-blue-600 font-bold">✓</span>
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <div>
+                    <p className="text-xs text-slate-500">
+                      Programme Fee
+                    </p>
+                    <span className="text-3xl font-bold text-slate-900">
+                      ₹{p.price}
+                    </span>
+                  </div>
+
+                  <button className="rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-7 py-3 text-sm font-semibold text-white shadow-lg hover:scale-[1.02] transition">
+                    Book Free Class
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </section>
+        </section>
+      </main>
+
+    </>
   );
 }
