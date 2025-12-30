@@ -44,3 +44,28 @@ body {
 button {
   -webkit-tap-highlight-color: transparent;
 }
+/* Premium soft background */
+body {
+  background: linear-gradient(
+    180deg,
+    #f8fbff 0%,
+    #ffffff 60%
+  );
+  color: #0f172a;
+}
+
+/* Glass card */
+.glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Glow shadow */
+.glow {
+  box-shadow:
+    0 20px 40px rgba(59, 130, 246, 0.15),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+}
+
