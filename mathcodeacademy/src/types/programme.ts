@@ -2,17 +2,28 @@ export type Subject = "Math" | "Physics" | "Programming";
 
 export interface Programme {
   title: string;
+  slug: string;
   sessions: number;
   duration: string;
   price: number;
+  popular?: boolean;
   features: string[];
-  popular?: boolean; // ✅ optional
 }
 
-export type ProgrammeCategory = {
-  [key in Subject]?: Programme[];
-};
+/**
+ * A category can contain ANY subset of subjects
+ * Example:
+ *  - AP Curriculum → Math, Physics, Programming
+ *  - Olympiads → Math only
+ */
+export type ProgrammeCategory = Partial<
+  Record<Subject, Programme[]>
+>;
 
-export type Programmes = {
-  [category: string]: ProgrammeCategory;
-};
+/**
+ * Full programmes structure
+ */
+export type Programmes = Record<
+  string,
+  ProgrammeCategory
+>;

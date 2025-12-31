@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { programmes } from "@/data/programmes";
 import { Subject } from "@/types/programme";
 
@@ -12,7 +11,7 @@ export default function ProgrammesPage() {
   const categories = Object.keys(programmes) as Category[];
   const [category, setCategory] = useState<Category>(categories[0]);
 
-  const subjects = Object.keys(programmes[category]) as Subject[];
+  const subjects = Object.keys(programmes[category]) as Array<keyof typeof programmes[typeof category]>;
   const [subject, setSubject] = useState<Subject>(subjects[0]);
 
   return (
