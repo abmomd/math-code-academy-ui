@@ -123,18 +123,40 @@ export default function ProgrammesPage() {
                 </ul>
 
                 {/* FOOTER */}
-                <div className="mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-                  <div>
-                    <p className="text-xs text-slate-500">Programme Fee</p>
-                    <span className="text-3xl font-bold text-slate-900">
-                      ₹{p.price}
-                    </span>
-                  </div>
+<div className="mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+  <div>
+    <p className="text-xs text-slate-500">Programme Fee</p>
+    <span className="text-3xl font-bold text-slate-900">
+      ₹{p.price}
+    </span>
+  </div>
 
-                  <button className="rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-3 text-sm font-semibold text-white shadow-lg hover:scale-[1.03] transition">
-                    Book Free Class
-                  </button>
-                </div>
+  <div className="flex gap-3">
+    {/* WhatsApp CTA */}
+    <a
+      href={`https://wa.me/919586753377?text=${encodeURIComponent(
+        `Hi Ashraf! I would like to enquire about the ${p.title} program.`
+      )}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="rounded-full bg-gradient-to-r from-green-500 to-green-600 
+      px-6 py-3 text-sm font-semibold text-white shadow-lg hover:scale-[1.03] transition"
+    >
+      Book Free Trial
+    </a>
+
+    {/* Explore More */}
+    <a
+      href={`/programmes/${p.slug}`}
+      className="rounded-full border border-slate-300 
+      px-6 py-3 text-sm font-semibold text-slate-700 
+      hover:border-blue-600 hover:text-blue-600 transition"
+    >
+      Explore More
+    </a>
+  </div>
+</div>
+
               </div>
             ))}
           </div>
