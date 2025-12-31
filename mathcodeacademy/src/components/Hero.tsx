@@ -57,7 +57,7 @@ export default function Hero() {
 
           <p className="mt-6 text-lg text-slate-600 max-w-xl">
             Build strong fundamentals, logical thinking, and problem solving skills
-            through expert tutors in live classes — designed for Grades 3–12.
+            through expert tutors in live classes — <span className="text-blue-600 text-bold">designed for Grades 3–12.</span>
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
