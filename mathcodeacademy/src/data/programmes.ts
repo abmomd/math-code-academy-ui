@@ -1,7 +1,7 @@
-export const programmes = {
-  /* =====================================================
-     AP CURRICULUM
-  ===================================================== */
+import type { Programmes } from "@/types/programme";
+
+export const programmes: Programmes = {
+  /* ================= AP CURRICULUM ================= */
   "AP Curriculum": {
     Math: [
       {
@@ -12,8 +12,8 @@ export const programmes = {
         price: 29999,
         popular: true,
         features: [
-          "Limits, continuity & derivatives",
-          "Applications of derivatives",
+          "Limits & continuity",
+          "Derivatives & applications",
           "Integrals & area concepts",
           "AP-style MCQs & FRQs",
         ],
@@ -25,10 +25,10 @@ export const programmes = {
         duration: "7 months",
         price: 39999,
         features: [
-          "Advanced integration techniques",
-          "Sequences & series",
+          "Series & sequences",
+          "Advanced integration",
           "Parametric & polar functions",
-          "Full AP exam preparation",
+          "Full AP exam prep",
         ],
       },
       {
@@ -38,10 +38,10 @@ export const programmes = {
         duration: "5 months",
         price: 32999,
         features: [
-          "Data analysis & interpretation",
+          "Data analysis",
           "Probability & distributions",
           "Inferential statistics",
-          "AP exam practice sets",
+          "Exam-focused practice",
         ],
       },
     ],
@@ -55,22 +55,9 @@ export const programmes = {
         price: 32999,
         features: [
           "Kinematics & dynamics",
-          "Work, energy & power",
-          "Waves & rotational motion",
-          "AP-style problem solving",
-        ],
-      },
-      {
-        title: "AP Physics 2",
-        slug: "ap-physics-2",
-        sessions: 45,
-        duration: "5 months",
-        price: 32999,
-        features: [
-          "Thermodynamics",
-          "Electricity & magnetism",
-          "Optics & modern physics",
-          "Conceptual + numerical mastery",
+          "Energy & momentum",
+          "Rotational motion",
+          "AP exam strategies",
         ],
       },
       {
@@ -83,19 +70,17 @@ export const programmes = {
           "Calculus-based mechanics",
           "Advanced Newtonian systems",
           "FRQ & MCQ drills",
-          "Exam-focused strategies",
         ],
       },
       {
-        title: "AP Physics C – Electricity & Magnetism",
+        title: "AP Physics C – E&M",
         slug: "ap-physics-c-em",
         sessions: 50,
         duration: "6 months",
         price: 34999,
         features: [
           "Electrostatics & circuits",
-          "Magnetic fields & induction",
-          "Maxwell concepts",
+          "Magnetism & induction",
           "AP-level numerical rigor",
         ],
       },
@@ -111,29 +96,14 @@ export const programmes = {
         features: [
           "Object-oriented programming",
           "Arrays & ArrayLists",
-          "Searching & sorting",
+          "Sorting & searching",
           "AP exam readiness",
-        ],
-      },
-      {
-        title: "AP Computer Science Principles",
-        slug: "ap-computer-science-principles",
-        sessions: 35,
-        duration: "4 months",
-        price: 24999,
-        features: [
-          "Computational thinking",
-          "Programming fundamentals",
-          "Data & algorithms",
-          "Performance task guidance",
         ],
       },
     ],
   },
 
-  /* =====================================================
-     US SCHOOL CURRICULUM
-  ===================================================== */
+  /* ================= US CURRICULUM ================= */
   "US Curriculum": {
     Math: [
       {
@@ -145,8 +115,7 @@ export const programmes = {
         features: [
           "Linear equations",
           "Polynomials",
-          "Graph interpretation",
-          "School exam preparation",
+          "Graphs & word problems",
         ],
       },
       {
@@ -159,19 +128,6 @@ export const programmes = {
           "Proof techniques",
           "Triangles & circles",
           "Coordinate geometry",
-          "Problem-solving focus",
-        ],
-      },
-      {
-        title: "Algebra II",
-        slug: "algebra-2",
-        sessions: 40,
-        duration: "5 months",
-        price: 24999,
-        features: [
-          "Quadratic & exponential functions",
-          "Sequences & series",
-          "Advanced algebraic methods",
         ],
       },
       {
@@ -181,44 +137,30 @@ export const programmes = {
         duration: "5 months",
         price: 27999,
         features: [
-          "Functions & transformations",
+          "Functions",
           "Trigonometry",
-          "Analytical thinking",
+          "Analytical reasoning",
         ],
       },
     ],
 
     Programming: [
       {
-        title: "Introduction to Programming (Python)",
+        title: "Intro to Programming (Python)",
         slug: "intro-to-programming-python",
         sessions: 30,
         duration: "3 months",
         price: 19999,
         features: [
           "Programming basics",
-          "Logic & problem solving",
-          "Hands-on coding projects",
-        ],
-      },
-      {
-        title: "Data Structures (High School)",
-        slug: "data-structures-high-school",
-        sessions: 40,
-        duration: "4 months",
-        price: 29999,
-        features: [
-          "Arrays, stacks & queues",
-          "Recursion basics",
-          "Algorithmic thinking",
+          "Logic building",
+          "Hands-on projects",
         ],
       },
     ],
   },
 
-  /* =====================================================
-     IGCSE
-  ===================================================== */
+  /* ================= IGCSE ================= */
   IGCSE: {
     Math: [
       {
@@ -231,19 +173,7 @@ export const programmes = {
         features: [
           "Core & extended syllabus",
           "Exam-style questions",
-          "Concept clarity & accuracy",
-        ],
-      },
-      {
-        title: "IGCSE Additional Mathematics",
-        slug: "igcse-additional-mathematics",
-        sessions: 45,
-        duration: "5 months",
-        price: 29999,
-        features: [
-          "Advanced algebra",
-          "Trigonometry",
-          "Pre-calculus foundations",
+          "Accuracy & speed",
         ],
       },
     ],
@@ -256,103 +186,15 @@ export const programmes = {
         duration: "5 months",
         price: 28999,
         features: [
-          "Mechanics & electricity",
-          "Waves & thermal physics",
-          "Exam-focused preparation",
-        ],
-      },
-    ],
-
-    Programming: [
-      {
-        title: "IGCSE Computer Science",
-        slug: "igcse-computer-science",
-        sessions: 40,
-        duration: "5 months",
-        price: 28999,
-        features: [
-          "Programming fundamentals",
-          "Algorithms & logic",
-          "Paper 1 & Paper 2 prep",
+          "Mechanics",
+          "Electricity & waves",
+          "Exam-oriented prep",
         ],
       },
     ],
   },
 
-  /* =====================================================
-     IB BOARD
-  ===================================================== */
-  "IB Board": {
-    Math: [
-      {
-        title: "IB Math AA SL",
-        slug: "ib-math-aa-sl",
-        sessions: 45,
-        duration: "6 months",
-        price: 34999,
-        features: [
-          "Conceptual understanding",
-          "Problem-solving approach",
-          "IA & exam support",
-        ],
-      },
-      {
-        title: "IB Math AA HL",
-        slug: "ib-math-aa-hl",
-        sessions: 60,
-        duration: "8 months",
-        price: 44999,
-        features: [
-          "Advanced calculus",
-          "Proof-based reasoning",
-          "HL exam mastery",
-        ],
-      },
-      {
-        title: "IB Math AI SL",
-        slug: "ib-math-ai-sl",
-        sessions: 40,
-        duration: "6 months",
-        price: 32999,
-        features: [
-          "Statistics & modeling",
-          "Technology-based learning",
-          "IA guidance",
-        ],
-      },
-      {
-        title: "IB Math AI HL",
-        slug: "ib-math-ai-hl",
-        sessions: 55,
-        duration: "8 months",
-        price: 42999,
-        features: [
-          "Advanced statistics",
-          "Real-world modeling",
-          "HL IA & exams",
-        ],
-      },
-    ],
-
-    Physics: [
-      {
-        title: "IB Physics SL / HL",
-        slug: "ib-physics",
-        sessions: 60,
-        duration: "8 months",
-        price: 44999,
-        features: [
-          "Core + optional topics",
-          "IA & exam preparation",
-          "Numerical & conceptual rigor",
-        ],
-      },
-    ],
-  },
-
-  /* =====================================================
-     OLYMPIADS & COMPETITIONS
-  ===================================================== */
+  /* ================= OLYMPIADS ================= */
   Olympiads: {
     Math: [
       {
@@ -364,8 +206,8 @@ export const programmes = {
         popular: true,
         features: [
           "Problem-solving techniques",
-          "Past AMC analysis",
-          "Speed & accuracy training",
+          "Past paper analysis",
+          "Speed training",
         ],
       },
       {
@@ -376,90 +218,61 @@ export const programmes = {
         price: 34999,
         features: [
           "Advanced algebra & geometry",
-          "Contest-level strategies",
+          "Contest strategies",
           "AIME readiness",
         ],
       },
       {
-        title: "AMC 12",
-        slug: "amc-12",
-        sessions: 50,
-        duration: "6 months",
-        price: 39999,
-        features: [
-          "Higher-level problem solving",
-          "Pre-calculus & combinatorics",
-          "AIME qualification focus",
-        ],
-      },
-      {
-        title: "IMO / HKIMO Advanced Training",
+        title: "IMO / HKIMO Training",
         slug: "imo-hkimo",
         sessions: 80,
         duration: "10 months",
         price: 69999,
         features: [
           "Proof techniques",
-          "Number theory & combinatorics",
-          "International-level rigor",
+          "Number theory",
+          "International rigor",
         ],
       },
     ],
   },
 
-  /* =====================================================
-     UNIVERSITY ENTRANCE EXAMS
-  ===================================================== */
+  /* ================= UNIVERSITY ENTRANCE ================= */
   "University Entrance": {
     Math: [
       {
-        title: "TMUA Preparation",
+        title: "TMUA",
         slug: "tmua",
         sessions: 45,
         duration: "4 months",
         price: 44999,
         features: [
           "Advanced problem solving",
-          "Speed & accuracy drills",
           "UK university focus",
         ],
       },
       {
-        title: "MAT Preparation",
-        slug: "mat",
-        sessions: 45,
-        duration: "4 months",
-        price: 44999,
-        features: [
-          "Oxford-style problems",
-          "Logical reasoning",
-          "Exam techniques",
-        ],
-      },
-      {
-        title: "STEP Preparation",
+        title: "STEP",
         slug: "step",
         sessions: 60,
         duration: "6 months",
         price: 54999,
         features: [
-          "Advanced calculus",
-          "University-level problems",
-          "STEP exam mastery",
+          "University-level calculus",
+          "STEP paper mastery",
         ],
       },
     ],
 
     Physics: [
       {
-        title: "PAT (Physics Aptitude Test)",
+        title: "PAT",
         slug: "pat",
         sessions: 45,
         duration: "4 months",
         price: 44999,
         features: [
-          "Advanced mechanics",
-          "Problem-solving speed",
+          "Physics aptitude problems",
           "Oxford/Cambridge prep",
         ],
       },
