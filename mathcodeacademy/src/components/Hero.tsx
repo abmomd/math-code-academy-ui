@@ -5,21 +5,21 @@ import Image from "next/image";
 
 const steps = [
   {
-    title: "Book a Free Trial Class",
+    title: "Step1: Book a Free Trial Class",
     description:
       "Schedule a no-cost live session to understand your learning needs and goals.",
     image: "/images/hero/step1-student.jpg",
     gradient: "from-blue-100 to-indigo-100",
   },
   {
-    title: "Get a Personalized Learning Path",
+    title: "Step2: Get a Personalized Learning Plan",
     description:
       "We design a custom roadmap based on grade level, curriculum, and pace.",
     image: "/images/hero/step2-student.jpg",
     gradient: "from-indigo-100 to-violet-100",
   },
   {
-    title: "Start Learning & Track Progress",
+    title: "Step3: Start Learning & Track Progress",
     description:
       "Attend live classes, practice effectively, and see measurable improvement.",
     image: "/images/hero/step3-student-parent.jpg",
@@ -49,15 +49,15 @@ export default function Hero() {
         {/* LEFT CONTENT */}
         <div>
           <h1 className="text-4xl md:text-5xl xl:text-6xl font-extrabold leading-tight text-slate-900">
-            Personalized{" "}
+            1 on 1{" "}
             <span className="text-blue-600">Math, Physics & Coding</span>
             <br />
-            Mentorship for School Students
+            Classes for School Students
           </h1>
 
           <p className="mt-6 text-lg text-slate-600 max-w-xl">
-            Build strong fundamentals, logical thinking, and real-world skills
-            through expert-led live classes — designed for Grades 3–12.
+            Build strong fundamentals, logical thinking, and problem solving skills
+            through expert tutors in live classes — designed for Grades 3–12.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
@@ -86,9 +86,9 @@ export default function Hero() {
             transition-all duration-700
           `}
         >
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-blue-600 mb-4">
+          <h1 className="text-xl font-bold uppercase tracking-wider text-blue-800 mb-4">
             How It Works
-          </h3>
+          </h1>
 
           {/* IMAGE */}
           <div className="relative h-56 md:h-64 w-full rounded-2xl overflow-hidden shadow-md mb-6">
