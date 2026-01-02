@@ -38,14 +38,11 @@ export default function ProgrammesPage() {
 
           {/* SCROLL HINT */}
           <p className="mb-3 text-center text-sm text-slate-500 md:hidden">
-            Swipe to explore programmes →
+            Scroll to explore programmes →
           </p>
 
           {/* CATEGORY SELECTOR (HORIZONTAL ON MOBILE) */}
           <div className="mb-10 overflow-x-auto scrollbar-hide">
-                     <p className="mb-2 text-center text-sm text-slate-500">
-              Scroll to explore programmes →
-            </p>
             <div className="mx-auto flex w-max gap-2 rounded-full bg-white/80 backdrop-blur-xl border border-slate-200 p-2 shadow-md">
               {categories.map(cat => {
                 const active = category === cat;
