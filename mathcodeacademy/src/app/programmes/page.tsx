@@ -18,27 +18,35 @@ export default function ProgrammesPage() {
     <>
       <Navbar />
 
-      {/* PAGE BACKGROUND */}
-      <main className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50 pt-28 md:pt-32 pb-24 md:pb-32">
-        {/* Soft gradient blobs */}
+      <main className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50 pt-28 pb-32">
+        {/* Background blobs */}
         <div className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-blue-300/30 blur-[140px]" />
         <div className="pointer-events-none absolute top-1/3 right-0 h-[420px] w-[420px] rounded-full bg-indigo-300/30 blur-[140px]" />
 
         <section className="relative mx-auto max-w-7xl px-4 sm:px-6">
+
           {/* HEADER */}
-          <div className="mb-16 md:mb-24 text-center">
-            <h1 className="text-3xl md:text-5xl font-bold text-slate-900">
+          <div className="mb-16 text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900">
               Our Programmes
             </h1>
-            <p className="mt-4 max-w-2xl mx-auto text-base md:text-lg text-slate-600">
-              Structured learning paths across AP, Olympiads, US & UK curricula —
-              designed for mastery and confidence.
+            <p className="mt-4 max-w-2xl mx-auto text-slate-600">
+              Carefully structured learning paths across global curricula and
+              competitive exams.
             </p>
           </div>
 
-          {/* CATEGORY SELECTOR */}
-          <div className="mb-10 flex justify-center">
-            <div className="flex gap-2 overflow-x-auto no-scrollbar rounded-full bg-white/80 backdrop-blur-xl border border-slate-200 p-2 shadow-md">
+          {/* SCROLL HINT */}
+          <p className="mb-3 text-center text-sm text-slate-500 md:hidden">
+            Swipe to explore programmes →
+          </p>
+
+          {/* CATEGORY SELECTOR (HORIZONTAL ON MOBILE) */}
+          <div className="mb-10 overflow-x-auto scrollbar-hide">
+                     <p className="mb-2 text-center text-sm text-slate-500">
+              Scroll to explore programmes →
+            </p>
+            <div className="mx-auto flex w-max gap-2 rounded-full bg-white/80 backdrop-blur-xl border border-slate-200 p-2 shadow-md">
               {categories.map(cat => {
                 const active = category === cat;
                 return (
@@ -46,11 +54,9 @@ export default function ProgrammesPage() {
                     key={cat}
                     onClick={() => {
                       setCategory(cat);
-                      setSubject(
-                        Object.keys(programmes[cat])[0] as Subject
-                      );
+                      setSubject(Object.keys(programmes[cat])[0] as Subject);
                     }}
-                    className={`whitespace-nowrap px-5 py-2 rounded-full text-sm font-medium transition ${
+                    className={`whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
                       active
                         ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow"
                         : "text-slate-600 hover:bg-blue-50"
@@ -62,51 +68,53 @@ export default function ProgrammesPage() {
               })}
             </div>
           </div>
-
-          {/* SUBJECT TABS */}
+           <p className="mb-3 text-center text-sm font-medium text-slate-600">
+              Select Subject
+            </p>
+          {/* SUBJECT SELECTOR CARD */}
           <div className="mb-16 flex justify-center">
-            <div className="flex gap-2 overflow-x-auto no-scrollbar rounded-2xl bg-white/80 backdrop-blur-xl border border-slate-200 p-2 shadow-md">
-              {subjects.map(s => {
-                const active = subject === s;
-                return (
-                  <button
-                    key={s}
-                    onClick={() => setSubject(s)}
-                    className={`whitespace-nowrap px-5 py-2 rounded-xl text-sm font-medium transition ${
-                      active
-                        ? "bg-blue-600 text-white shadow"
-                        : "text-slate-600 hover:bg-blue-50"
-                    }`}
-                  >
-                    {s}
-                  </button>
-                );
-              })}
+
+            <div className="w-full max-w-md rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200 p-4 shadow-md">
+ 
+              <div className="flex gap-2">
+                {subjects.map(s => {
+                  const active = subject === s;
+                  return (
+                    <button
+                      key={s}
+                      onClick={() => setSubject(s)}
+                      className={`flex-1 px-4 py-2.5 rounded-xl text-sm font-semibold transition ${
+                        active
+                          ? "bg-blue-600 text-white shadow"
+                          : "text-slate-600 hover:bg-blue-50"
+                      }`}
+                    >
+                      {s}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
           {/* PROGRAMME CARDS */}
-          <div className="grid gap-8 md:gap-12 md:grid-cols-2">
+          <div className="grid gap-8 sm:gap-10 md:grid-cols-2">
             {programmes[category][subject]?.map((p, i) => (
               <div
                 key={i}
-                className="relative rounded-3xl bg-white/80 backdrop-blur-xl border border-slate-200 
-                p-6 md:p-8 shadow-[0_25px_70px_-20px_rgba(0,0,0,0.18)]
-                transition-all duration-300
-                hover:-translate-y-1 md:hover:-translate-y-2
-                hover:shadow-[0_35px_90px_-20px_rgba(59,130,246,0.35)]"
+                className="relative rounded-3xl bg-white/90 backdrop-blur-xl 
+                border border-slate-200 p-7 sm:p-8
+                shadow-[0_20px_60px_-20px_rgba(0,0,0,0.15)]
+                transition hover:-translate-y-1 hover:shadow-[0_30px_80px_-20px_rgba(59,130,246,0.35)]"
               >
-                {/* POPULAR BADGE */}
+                {/* Popular */}
                 {p.popular && (
-                  <span className="absolute right-4 top-4 md:right-6 md:top-6 rounded-full 
-                  bg-gradient-to-r from-blue-600 to-indigo-600 
-                  px-3 py-1 text-xs font-semibold text-white shadow">
+                  <span className="absolute right-5 top-5 rounded-full bg-blue-600 px-3 py-1 text-xs font-semibold text-white">
                     Most Popular
                   </span>
                 )}
 
-                {/* TITLE */}
-                <h3 className="text-xl md:text-2xl font-semibold text-slate-900">
+                <h3 className="text-xl sm:text-2xl font-semibold text-slate-900">
                   {p.title}
                 </h3>
 
@@ -114,7 +122,6 @@ export default function ProgrammesPage() {
                   {p.sessions} sessions • {p.duration}
                 </p>
 
-                {/* FEATURES */}
                 <ul className="mt-5 space-y-3 text-sm text-slate-600">
                   {p.features.map((f, idx) => (
                     <li key={idx} className="flex gap-3">
@@ -125,29 +132,20 @@ export default function ProgrammesPage() {
                 </ul>
 
                 {/* CTA */}
-                <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                  {/* WhatsApp CTA */}
+                <div className="mt-8 flex flex-col sm:flex-row gap-3">
                   <a
                     href={`https://wa.me/919586753377?text=${encodeURIComponent(
                       `Hi Ashraf! I would like to enquire about the ${p.title} program.`
                     )}`}
                     target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full sm:w-auto text-center rounded-full 
-                    bg-gradient-to-r from-green-500 to-green-600 
-                    px-6 py-3 text-sm font-semibold text-white shadow-lg 
-                    hover:scale-[1.02] transition"
+                    className="flex-1 rounded-full bg-green-500 px-6 py-3 text-sm font-semibold text-white text-center hover:bg-green-600 transition"
                   >
                     Book Free Trial
                   </a>
 
-                  {/* Explore More */}
                   <a
                     href={`/programmes/${p.slug}`}
-                    className="w-full sm:w-auto text-center rounded-full 
-                    border border-slate-300 
-                    px-6 py-3 text-sm font-semibold text-slate-700 
-                    hover:border-blue-600 hover:text-blue-600 transition"
+                    className="flex-1 rounded-full border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 text-center hover:border-blue-600 hover:text-blue-600 transition"
                   >
                     Explore More
                   </a>
@@ -155,8 +153,10 @@ export default function ProgrammesPage() {
               </div>
             ))}
           </div>
+
         </section>
       </main>
     </>
   );
 }
+
