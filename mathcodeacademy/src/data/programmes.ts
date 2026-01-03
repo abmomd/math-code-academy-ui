@@ -9,8 +9,8 @@ export const programmes: Programmes = {
         slug: "ap-calculus-ab",
         sessions: 40,
         duration: "5 months",
-        price: 29999,
         popular: true,
+        syllabusPdf: "/pdfs/syllabus/ap-calculus-ab.pdf",
         features: [
           "Limits & continuity",
           "Derivatives & applications",
@@ -23,7 +23,7 @@ export const programmes: Programmes = {
         slug: "ap-calculus-bc",
         sessions: 60,
         duration: "7 months",
-        price: 39999,
+        syllabusPdf: "/pdfs/syllabus/ap-calculus-bc.pdf",
         features: [
           "Series & sequences",
           "Advanced integration",
@@ -36,7 +36,7 @@ export const programmes: Programmes = {
         slug: "ap-statistics",
         sessions: 45,
         duration: "5 months",
-        price: 32999,
+        syllabusPdf: "/pdfs/syllabus/ap-statistics.pdf",
         features: [
           "Data analysis",
           "Probability & distributions",
@@ -52,7 +52,7 @@ export const programmes: Programmes = {
         slug: "ap-physics-1",
         sessions: 45,
         duration: "5 months",
-        price: 32999,
+        syllabusPdf: "/pdfs/syllabus/ap-physics-1.pdf",
         features: [
           "Kinematics & dynamics",
           "Energy & momentum",
@@ -65,39 +65,11 @@ export const programmes: Programmes = {
         slug: "ap-physics-c-mechanics",
         sessions: 50,
         duration: "6 months",
-        price: 34999,
+        syllabusPdf: "/pdfs/syllabus/ap-physics-c-mechanics.pdf",
         features: [
           "Calculus-based mechanics",
           "Advanced Newtonian systems",
           "FRQ & MCQ drills",
-        ],
-      },
-      {
-        title: "AP Physics C – E&M",
-        slug: "ap-physics-c-em",
-        sessions: 50,
-        duration: "6 months",
-        price: 34999,
-        features: [
-          "Electrostatics & circuits",
-          "Magnetism & induction",
-          "AP-level numerical rigor",
-        ],
-      },
-    ],
-
-    Programming: [
-      {
-        title: "AP Computer Science A (Java)",
-        slug: "ap-computer-science-a",
-        sessions: 45,
-        duration: "5 months",
-        price: 32999,
-        features: [
-          "Object-oriented programming",
-          "Arrays & ArrayLists",
-          "Sorting & searching",
-          "AP exam readiness",
         ],
       },
     ],
@@ -111,7 +83,6 @@ export const programmes: Programmes = {
         slug: "algebra-1",
         sessions: 30,
         duration: "4 months",
-        price: 19999,
         features: [
           "Linear equations",
           "Polynomials",
@@ -123,38 +94,10 @@ export const programmes: Programmes = {
         slug: "geometry",
         sessions: 35,
         duration: "4 months",
-        price: 21999,
         features: [
           "Proof techniques",
           "Triangles & circles",
           "Coordinate geometry",
-        ],
-      },
-      {
-        title: "Pre-Calculus",
-        slug: "pre-calculus",
-        sessions: 45,
-        duration: "5 months",
-        price: 27999,
-        features: [
-          "Functions",
-          "Trigonometry",
-          "Analytical reasoning",
-        ],
-      },
-    ],
-
-    Programming: [
-      {
-        title: "Intro to Programming (Python)",
-        slug: "intro-to-programming-python",
-        sessions: 30,
-        duration: "3 months",
-        price: 19999,
-        features: [
-          "Programming basics",
-          "Logic building",
-          "Hands-on projects",
         ],
       },
     ],
@@ -168,8 +111,8 @@ export const programmes: Programmes = {
         slug: "igcse-mathematics",
         sessions: 40,
         duration: "5 months",
-        price: 27999,
         popular: true,
+        syllabusPdf: "/pdfs/syllabus/igcse-mathematics.pdf",
         features: [
           "Core & extended syllabus",
           "Exam-style questions",
@@ -184,7 +127,7 @@ export const programmes: Programmes = {
         slug: "igcse-physics",
         sessions: 40,
         duration: "5 months",
-        price: 28999,
+        syllabusPdf: "/pdfs/syllabus/igcse-physics.pdf",
         features: [
           "Mechanics",
           "Electricity & waves",
@@ -202,12 +145,18 @@ export const programmes: Programmes = {
         slug: "amc-8",
         sessions: 35,
         duration: "4 months",
-        price: 29999,
         popular: true,
+        syllabusPdf: "/pdfs/syllabus/amc8-syllabus.pdf",
         features: [
-          "Problem-solving techniques",
-          "Past paper analysis",
-          "Speed training",
+          "Geometry",
+          "Number Theory",
+          "Combinatorics",
+          "Algebra",
+        ],
+        pastPapers: [
+          { year: 2021, url: "/pdfs/past-papers/amc8-2021.pdf" },
+          { year: 2022, url: "/pdfs/past-papers/amc8-2022.pdf" },
+          { year: 2023, url: "/pdfs/past-papers/amc8-2023.pdf" },
         ],
       },
       {
@@ -215,23 +164,17 @@ export const programmes: Programmes = {
         slug: "amc-10",
         sessions: 45,
         duration: "5 months",
-        price: 34999,
+        syllabusPdf: "/pdfs/syllabus/amc10-syllabus.pdf",
         features: [
-          "Advanced algebra & geometry",
-          "Contest strategies",
-          "AIME readiness",
+          "Geometry",
+          "Algebra",
+          "Number Theory",
+          "Combinatorics",
+          "Statistics",
         ],
-      },
-      {
-        title: "IMO / HKIMO Training",
-        slug: "imo-hkimo",
-        sessions: 80,
-        duration: "10 months",
-        price: 69999,
-        features: [
-          "Proof techniques",
-          "Number theory",
-          "International rigor",
+        pastPapers: [
+          { year: 2020, url: "/pdfs/past-papers/amc10-2020.pdf" },
+          { year: 2021, url: "/pdfs/past-papers/amc10-2021.pdf" },
         ],
       },
     ],
@@ -245,7 +188,6 @@ export const programmes: Programmes = {
         slug: "tmua",
         sessions: 45,
         duration: "4 months",
-        price: 44999,
         features: [
           "Advanced problem solving",
           "UK university focus",
@@ -256,24 +198,9 @@ export const programmes: Programmes = {
         slug: "step",
         sessions: 60,
         duration: "6 months",
-        price: 54999,
         features: [
           "University-level calculus",
           "STEP paper mastery",
-        ],
-      },
-    ],
-
-    Physics: [
-      {
-        title: "PAT",
-        slug: "pat",
-        sessions: 45,
-        duration: "4 months",
-        price: 44999,
-        features: [
-          "Physics aptitude problems",
-          "Oxford/Cambridge prep",
         ],
       },
     ],
