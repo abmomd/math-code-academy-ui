@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import { programmes } from "@/data/programmes";
 import { Subject } from "@/types/programme";
@@ -8,12 +9,39 @@ import { Subject } from "@/types/programme";
 type Category = keyof typeof programmes;
 
 export default function ProgrammesPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   const categories = Object.keys(programmes) as Category[];
-  const [category, setCategory] = useState<Category>(categories[0]);
+
+  /* ---------------- URL PARAMS ---------------- */
+  const urlCategory = searchParams.get("category") as Category | null;
+  const urlSubject = searchParams.get("subject") as Subject | null;
+
+  /* ---------------- STATE ---------------- */
+  const [category, setCategory] = useState<Category>(
+    categories.includes(urlCategory as Category)
+      ? (urlCategory as Category)
+      : categories[0]
+  );
 
   const subjects = Object.keys(programmes[category]) as Subject[];
-  const [subject, setSubject] = useState<Subject>(subjects[0]);
 
+  const [subject, setSubject] = useState<Subject>(
+    subjects.includes(urlSubject as Subject)
+      ? (urlSubject as Subject)
+      : subjects[0]
+  );
+
+  /* ---------------- SYNC URL ON CHANGE ---------------- */
+  useEffect(() => {
+    router.replace(
+      `/programmes?category=${encodeURIComponent(category)}&subject=${subject}`,
+      { scroll: false }
+    );
+  }, [category, subject, router]);
+
+  /* ---------------- UI ---------------- */
   return (
     <>
       <Navbar />
@@ -36,12 +64,12 @@ export default function ProgrammesPage() {
             </p>
           </div>
 
-          {/* SCROLL HINT */}
+          {/* MOBILE SCROLL HINT */}
           <p className="mb-3 text-center text-sm text-slate-500 md:hidden">
             Scroll to explore programmes →
           </p>
 
-          {/* CATEGORY SELECTOR (HORIZONTAL ON MOBILE) */}
+          {/* CATEGORY SELECTOR */}
           <div className="mb-10 overflow-x-auto scrollbar-hide">
             <div className="mx-auto flex w-max gap-2 rounded-full bg-white/80 backdrop-blur-xl border border-slate-200 p-2 shadow-md">
               {categories.map(cat => {
@@ -51,7 +79,9 @@ export default function ProgrammesPage() {
                     key={cat}
                     onClick={() => {
                       setCategory(cat);
-                      setSubject(Object.keys(programmes[cat])[0] as Subject);
+                      setSubject(
+                        Object.keys(programmes[cat])[0] as Subject
+                      );
                     }}
                     className={`whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
                       active
@@ -65,14 +95,14 @@ export default function ProgrammesPage() {
               })}
             </div>
           </div>
-           <p className="mb-3 text-center text-sm font-medium text-slate-600">
-              Select Subject
-            </p>
-          {/* SUBJECT SELECTOR CARD */}
-          <div className="mb-16 flex justify-center">
 
+          {/* SUBJECT SELECTOR */}
+          <p className="mb-3 text-center text-sm font-medium text-slate-600">
+            Select Subject
+          </p>
+
+          <div className="mb-16 flex justify-center">
             <div className="w-full max-w-md rounded-2xl bg-white/90 backdrop-blur-xl border border-slate-200 p-4 shadow-md">
- 
               <div className="flex gap-2">
                 {subjects.map(s => {
                   const active = subject === s;
@@ -104,7 +134,6 @@ export default function ProgrammesPage() {
                 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.15)]
                 transition hover:-translate-y-1 hover:shadow-[0_30px_80px_-20px_rgba(59,130,246,0.35)]"
               >
-                {/* Popular */}
                 {p.popular && (
                   <span className="absolute right-5 top-5 rounded-full bg-blue-600 px-3 py-1 text-xs font-semibold text-white">
                     Most Popular
@@ -156,4 +185,3 @@ export default function ProgrammesPage() {
     </>
   );
 }
-

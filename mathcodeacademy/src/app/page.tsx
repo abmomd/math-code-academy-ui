@@ -9,6 +9,7 @@ import TestimonialsSlider from "@/components/TestimonialsSlider";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import CoverageSection from "@/components/CoverageSection";
+import ProgrammesOverview from "@/components/ProgrammesOverview";
 
 export default function HomePage() {
   return (
@@ -18,6 +19,7 @@ export default function HomePage() {
       <main className="bg-white">
         <Hero />
 
+        <ProgrammesOverview />
         <StatsStrip />
 
         
