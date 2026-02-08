@@ -20,8 +20,8 @@ export default function InstructorsPage() {
             </p>
           </div>
 
-          {/* Grid */}
-          <div className="grid gap-10 md:grid-cols-2">
+          {/* GRID (FIXED) */}
+          <div className="grid gap-10 sm:grid-cols-2">
             {instructors.map(instructor => (
               <InstructorCard
                 key={instructor.id}

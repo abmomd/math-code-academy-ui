@@ -18,7 +18,7 @@ export const instructors: Instructor[] = [
     },
 
     linkedin: "https://www.linkedin.com/in/fatema-bhatt-172154196/",
-    slug: "fatema-bhatt",
+
   },
 
   {
@@ -38,6 +38,6 @@ export const instructors: Instructor[] = [
     },
 
     linkedin: "https://www.linkedin.com/in/muhammed-ashraf-bhura-099a95200/",
-    slug: "ashraf-bhura",
+
   },
 ];
