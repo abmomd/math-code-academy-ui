@@ -15,7 +15,11 @@ export default function CTA() {
         </p>
 
         <a
-          href="/contact"
+            href={`https://wa.me/919586753377?text=${encodeURIComponent(
+    "Hi Ashraf! I would like to book a free trial class."
+  )}`}
+  target="_blank"
+  rel="noopener noreferrer"
           className="inline-block mt-8 rounded-full bg-white px-10 py-4
           text-sm font-semibold text-blue-700
           shadow-lg hover:shadow-xl transition"
