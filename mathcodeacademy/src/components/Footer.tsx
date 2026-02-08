@@ -8,6 +8,7 @@ import {
   Instagram,
   Mail,
   MapPin,
+  Contact,
 } from "lucide-react";
 
 export default function Footer() {
@@ -69,9 +70,10 @@ export default function Footer() {
 
               <div className="space-y-3 text-sm text-slate-600">
                 <div className="flex items-center gap-3">
-                  <Mail size={16} className="text-blue-600" />
-                  <span>ashrafbhura8@gmail.com</span>
+                  <Contact size={16} className="text-blue-600" />
+                  <span>+91 9586753377</span>
                 </div>
+                
 
                 <div className="flex items-center gap-3">
                   <MapPin size={16} className="text-blue-600" />
@@ -90,7 +92,7 @@ export default function Footer() {
                 </a>
 
                 <a
-                  href="#"
+                  href="https://www.youtube.com/@MathAndCodeWithAshraf"
                   aria-label="YouTube"
                   className="text-slate-500 hover:text-blue-600 transition"
                 >

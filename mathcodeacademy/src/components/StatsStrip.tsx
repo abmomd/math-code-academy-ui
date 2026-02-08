@@ -1,6 +1,6 @@
 export default function StatsStrip() {
   return (
-    <section className="relative z-10 mx-auto max-w-7xl px-6 mt-24">
+    <section className="relative z-10 mx-auto max-w-7xl px-6 mt-14 mb-40">
       <div
         className="
           rounded-3xl 

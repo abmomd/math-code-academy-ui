@@ -42,10 +42,10 @@ export default function ContactPage() {
             </div>
 
             <div className="mt-12 space-y-6 text-sm text-slate-700">
-              <div className="flex items-center gap-4">
+              {/* <div className="flex items-center gap-4">
                 <Mail className="text-blue-600" size={18} />
                 <span>ashrafbhura8@gmail.com</span>
-              </div>
+              </div> */}
 
               <div className="flex items-center gap-4">
                 <Phone className="text-blue-600" size={18} />

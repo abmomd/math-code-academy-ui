@@ -18,29 +18,55 @@ export default function ProgrammesClient() {
   const urlSubject = searchParams.get("subject") as Subject | null;
 
   /* ---------------- STATE ---------------- */
-  const [category, setCategory] = useState<Category>(
-    categories.includes(urlCategory as Category)
-      ? (urlCategory as Category)
-      : categories[0]
-  );
-
-  const subjects = Object.keys(programmes[category]) as Subject[];
-
+  const [category, setCategory] = useState<Category>(categories[0]);
   const [subject, setSubject] = useState<Subject>(
-    subjects.includes(urlSubject as Subject)
-      ? (urlSubject as Subject)
-      : subjects[0]
+    Object.keys(programmes[categories[0]])[0] as Subject
   );
 
-  /* ---------------- SYNC URL ---------------- */
+  /* ------------------------------------------------
+     🔑 SYNC STATE FROM URL (Navbar → Page)
+  ------------------------------------------------ */
   useEffect(() => {
+    if (urlCategory && programmes[urlCategory]) {
+      setCategory(urlCategory);
+
+      const validSubjects = Object.keys(
+        programmes[urlCategory]
+      ) as Subject[];
+
+      if (urlSubject && validSubjects.includes(urlSubject)) {
+        setSubject(urlSubject);
+      } else {
+        setSubject(validSubjects[0]);
+      }
+    }
+  }, [urlCategory, urlSubject]);
+
+  /* ------------------------------------------------
+     🔑 SYNC URL FROM STATE (Page UI → URL)
+     (Guarded to avoid infinite loop)
+  ------------------------------------------------ */
+useEffect(() => {
+  const currentCategory = searchParams.get("category");
+  const currentSubject = searchParams.get("subject");
+
+  // ✅ Only update URL if it is ACTUALLY different
+  if (
+    currentCategory !== category ||
+    currentSubject !== subject
+  ) {
     router.replace(
       `/programmes?category=${encodeURIComponent(category)}&subject=${subject}`,
       { scroll: false }
     );
-  }, [category, subject, router]);
+  }
+  // ❌ DO NOT add searchParams here
+}, [category, subject, router]);
+
 
   /* ---------------- UI (UNCHANGED) ---------------- */
+  const subjects = Object.keys(programmes[category]) as Subject[];
+
   return (
     <main className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50 pt-28 pb-32">
       {/* Background blobs */}
@@ -116,9 +142,9 @@ export default function ProgrammesClient() {
 
         {/* PROGRAMME CARDS */}
         <div className="grid gap-8 sm:gap-10 md:grid-cols-2">
-          {programmes[category][subject]?.map((p, i) => (
+          {programmes[category][subject]?.map(p => (
             <div
-              key={i}
+              key={p.slug}
               className="relative rounded-3xl bg-white/90 backdrop-blur-xl 
               border border-slate-200 p-7 sm:p-8
               shadow-[0_20px_60px_-20px_rgba(0,0,0,0.15)]
@@ -147,7 +173,6 @@ export default function ProgrammesClient() {
                 ))}
               </ul>
 
-              {/* CTA */}
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <a
                   href={`https://wa.me/919586753377?text=${encodeURIComponent(
